@@ -2,7 +2,7 @@
 
 ## desc
 
-like nodejs lib 'url'
+caculate the time you cost
 
 ## feat
 
@@ -11,7 +11,16 @@ like nodejs lib 'url'
 - support end key
 - support mock
 
-## how to use for poduction?
+## apis
+
+- [x] recordTime
+- [x] caculateTime
+
+```sh
+cat index.sh | grep "function " | sed "s/function */- [x] /g"  | sed "s/() *{//g"
+```
+
+## how to use for poduction ?
 
 ```sh
 # get the code
@@ -34,7 +43,7 @@ repalceContent.cost:1m1s
 output
 ```
 
-## how to use for developer?
+## how to use for developer ?
 
 ```sh
 # get the code
