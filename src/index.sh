@@ -2,30 +2,7 @@
 
 declare -A time_data_dic
 time_data_dic=()
-
-function recordTime() {
-  local s="start"
-  local e="end"
-  local n=
-  local val=
-  local key=
-  if [ "${1}" ]; then
-    n="${1}"
-  fi
-  if [ "${n}" ]; then
-    key="${n}.${s}"
-  else
-    key="${s}"
-  fi
-  val=$(date +'%Y-%m-%d %H:%M:%S')
-  if [ "${2}" ]; then
-    val="${2}"
-  fi
-
-  time_data_dic+=([$key]=$val)
-  #echo "$key:$val"
-}
-function caculateTime() {
+function cost_get (){
   local s="start"
   local e="end"
   local n=
@@ -39,9 +16,8 @@ function caculateTime() {
   local end=
   local keyCost=
 
-  if [ "${1}" ]; then
-    n="${1}"
-  fi
+  [ -n "$1" ] && n="$1"
+
   if [ "${n}" ]; then
     keyEnd="${n}.${e}"
     keyStart="${n}.${s}"
@@ -53,9 +29,7 @@ function caculateTime() {
   fi
 
   valEnd=$(date +'%Y-%m-%d %H:%M:%S')
-  if [ "${2}" ]; then
-    valEnd="${2}"
-  fi
+  [ -n "$2" ] && valEnd="${2}"
 
   time_data_dic+=([$keyEnd]=$val)
   #valStart=`date +'%Y-%m-%d %H:%M:%S'`
@@ -72,6 +46,31 @@ function caculateTime() {
   echo "$keyStart:$valStart"
   echo "$keyEnd:$valEnd"
   echo "$keyCost:${result}"
+}
+function cost_set (){
+  local s=
+  local e=
+  local val=
+  local key=
+
+  s="start"
+  e="end"
+
+  key="$s"
+  [ -n "$1" ] && key="${1}.${s}"
+  val=$(date +'%Y-%m-%d %H:%M:%S')
+  [ -n "$2" ] && val="$2"
+
+  time_data_dic+=([$key]=$val)
+  #echo "$key:$val"
+}
+
+
+function recordTime() {
+  cost_set "$1" "$2"
+}
+function caculateTime() {
+  cost_get "$1" "$2"
 }
 
 # file-usage
