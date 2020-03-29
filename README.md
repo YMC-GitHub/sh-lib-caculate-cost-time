@@ -13,11 +13,13 @@ caculate the time you cost
 
 ## apis
 
+- [x] cost_get
+- [x] cost_set
 - [x] recordTime
 - [x] caculateTime
 
 ```sh
-cat index.sh | grep "function " | sed "s/function */- [x] /g"  | sed "s/() *{//g"
+cat src/index.sh | grep "function " | sed "s/function */- [x] /g"  | sed "s/() *{//g"
 ```
 
 ## how to use for poduction ?
